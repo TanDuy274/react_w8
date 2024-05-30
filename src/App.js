@@ -1,24 +1,47 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import HomePage from './components/HomePage';
+import LayOut from './components/LayOut/LayOut';
+import NotFound from './components/NotFound';
+import PostList1 from './components/PostList1';
+import PostList2 from './components/PostList2';
+import AddPostItem from './components/AddPostItem';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Routes>
+        <Route
+          path='/'
+          element={<LayOut />}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Route
+            path='/home'
+            element={<HomePage />}
+          />
+
+          <Route
+            path='/postlist1'
+            element={<PostList1 />}
+          />
+
+          <Route
+            path='/postlist2'
+            element={<PostList2 />}
+          />
+
+          <Route
+            path='/postlist2/add'
+            element={<AddPostItem />}
+          />
+
+          <Route
+            path='*'
+            element={<NotFound />}
+          />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
